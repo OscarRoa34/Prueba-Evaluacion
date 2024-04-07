@@ -22,7 +22,7 @@ public class WriteXML {
         File outputFile = new File(p.getProperties("file_outputCities"));
         ArrayList<City> cities = extractCities(info);
         writeToXML(cities, outputFile);
-        System.out.println("Archivo de ciudades guardado en " + p.getProperties("file_outputCities"));
+        System.out.println("City Files saved in " + p.getProperties("file_outputCities"));
     }
 
     private ArrayList<City> extractCities(ArrayList<Info> info) {
@@ -35,6 +35,9 @@ public class WriteXML {
 
     private void writeToXML(ArrayList<City> cities, File outputFile) {
         try {
+            if (!outputFile.exists()) {
+                outputFile.createNewFile();
+            }
             JAXBContext jaxbContext = JAXBContext.newInstance(CityWrapper.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);

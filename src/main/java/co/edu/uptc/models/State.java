@@ -26,9 +26,4 @@ public class State {
         this.stateCode = stateCode;
     }
 
-    @Override
-    public String toString() {
-        return "State [stateName=" + stateName + ", stateCode=" + stateCode + "]";
-    }
-
 }

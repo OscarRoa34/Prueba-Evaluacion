@@ -36,9 +36,4 @@ public class Info {
         this.city = city;
     }
 
-    @Override
-    public String toString() {
-        return "Info [region=" + region + ", state=" + state + ", city=" + city + "]";
-    }
-
 }

@@ -26,9 +26,4 @@ public class City {
         this.cityCode = cityCode;
     }
 
-    @Override
-    public String toString() {
-        return "City [cityName=" + cityName + ", cityCode=" + cityCode + "]";
-    }
-
 }

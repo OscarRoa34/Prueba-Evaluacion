@@ -12,7 +12,7 @@ public class PropertiesService {
     public void load() {
 
         try {
-            p.load(new FileInputStream("src\\main\\resources\\config.properties"));
+            p.load(new FileInputStream("resources\\config.properties"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

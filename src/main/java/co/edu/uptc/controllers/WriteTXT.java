@@ -1,6 +1,7 @@
 package co.edu.uptc.controllers;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -16,14 +17,15 @@ public class WriteTXT {
     private PropertiesService p = new PropertiesService();
 
     public void writeTXT(ArrayList<Info> info) {
+        File outputFile = new File(p.getProperties("file_outputRegions"));
         try (BufferedWriter writer = new BufferedWriter(
-                new OutputStreamWriter(new FileOutputStream(p.getProperties("file_outputRegions")), "UTF-8"))) {
+                new OutputStreamWriter(new FileOutputStream(outputFile), "UTF-8"))) {
             ArrayList<Region> regions = removeDuplicates(info);
             for (Region element : regions) {
                 writer.write(element.toString());
                 writer.newLine();
             }
-            System.out.println("Archivo de Regiones guardado en " + p.getProperties("file_outputRegions"));
+            System.out.println("Regions File saved in " + outputFile.getPath());
         } catch (IOException e) {
             e.printStackTrace();
         }

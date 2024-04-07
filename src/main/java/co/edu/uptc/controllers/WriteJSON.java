@@ -18,11 +18,14 @@ public class WriteJSON {
     private PropertiesService p = new PropertiesService();
 
     public void writeJSON(ArrayList<Info> infoList) {
+        File outputFile = new File(p.getProperties("file_outputStates"));
         try {
-            File outputFile = new File(p.getProperties("file_outputStates"));
+            if (!outputFile.exists()) {
+                outputFile.createNewFile();
+            }
             List<State> uniqueStates = extractUniqueStates(infoList);
             writeToJSON(uniqueStates, outputFile);
-            System.out.println("Archivo de estados guardado en " + p.getProperties("file_outputStates"));
+            System.out.println("States File saved in " + p.getProperties("file_outputStates"));
         } catch (IOException e) {
             e.printStackTrace();
         }
